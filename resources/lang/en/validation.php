@@ -89,8 +89,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'thing' => [
+            'required' => 'Whoops! That\'s not long enough',
         ],
     ],
 

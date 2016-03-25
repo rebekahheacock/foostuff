@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -10,10 +11,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +24,29 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/', function () {
+	    return view('welcome');
+	});
+
+	Route::get('/practice', function () {
+	    
+	    
+	    $faker = Faker\Factory::create();
+	    echo $faker->name;
+	    //$tomorrow = Carbon\Carbon::now()->addDay();
+	    //return $tomorrow;
+
+	});
+
+	Route::get('/stuff', 'StuffController@getIndex');
+	Route::get('/stuff/create', 'StuffController@getCreate');
+	Route::post('/stuff/create', 'StuffController@postCreate');
+
+	Route::get('/cat/create', 'CatController@getCreate');
+	Route::post('/cat/create', 'CatController@postCreate');
+
+	if(App::environment('local')) {
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    }
+	
 });
