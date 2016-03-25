@@ -13,7 +13,6 @@ class CatController extends Controller {
     * Responds to requests to GET /cat/create
     */
     public function getCreate(Request $request) {
-        \Debugbar::info($request->session());
         $request->session()->forget('_old_input');
         return view('cat.create');
     }
